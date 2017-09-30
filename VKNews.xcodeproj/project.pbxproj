@@ -13,6 +13,10 @@
 		CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8C001D1F7D9F80009BCA6E /* VKNews.xcdatamodeld */; };
 		CB8C00211F7D9F80009BCA6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8C00201F7D9F80009BCA6E /* Assets.xcassets */; };
 		CB8C00241F7D9F80009BCA6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8C00221F7D9F80009BCA6E /* LaunchScreen.storyboard */; };
+		CBA711EA1F7EF4A900E251E9 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */; };
+		CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */; };
+		CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */; };
+		CBA711F41F7F10E500E251E9 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +28,10 @@
 		CB8C00201F7D9F80009BCA6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8C00231F7D9F80009BCA6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB8C00251F7D9F80009BCA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
+		CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
+		CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +39,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA711EA1F7EF4A900E251E9 /* VKSdkFramework.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +51,7 @@
 			children = (
 				CB8C00151F7D9F80009BCA6E /* VKNews */,
 				CB8C00141F7D9F80009BCA6E /* Products */,
+				CBA711E81F7EF4A800E251E9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,8 +66,10 @@
 		CB8C00151F7D9F80009BCA6E /* VKNews */ = {
 			isa = PBXGroup;
 			children = (
+				CBA711EE1F7F0FCE00E251E9 /* Controller */,
+				CBA711ED1F7F0FC700E251E9 /* View */,
+				CBA711EC1F7F0FBA00E251E9 /* Model */,
 				CB8C00161F7D9F80009BCA6E /* AppDelegate.swift */,
-				CB8C00181F7D9F80009BCA6E /* ViewController.swift */,
 				CB8C001A1F7D9F80009BCA6E /* Main.storyboard */,
 				CB8C00201F7D9F80009BCA6E /* Assets.xcassets */,
 				CB8C00221F7D9F80009BCA6E /* LaunchScreen.storyboard */,
@@ -65,6 +77,39 @@
 				CB8C001D1F7D9F80009BCA6E /* VKNews.xcdatamodeld */,
 			);
 			path = VKNews;
+			sourceTree = "<group>";
+		};
+		CBA711E81F7EF4A800E251E9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		CBA711EC1F7F0FBA00E251E9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CBA711ED1F7F0FC700E251E9 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */,
+				CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CBA711EE1F7F0FCE00E251E9 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				CB8C00181F7D9F80009BCA6E /* ViewController.swift */,
+				CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -77,6 +122,7 @@
 				CB8C000F1F7D9F80009BCA6E /* Sources */,
 				CB8C00101F7D9F80009BCA6E /* Frameworks */,
 				CB8C00111F7D9F80009BCA6E /* Resources */,
+				CBA711EB1F7EF4E600E251E9 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -128,18 +174,38 @@
 			files = (
 				CB8C00241F7D9F80009BCA6E /* LaunchScreen.storyboard in Resources */,
 				CB8C00211F7D9F80009BCA6E /* Assets.xcassets in Resources */,
+				CBA711F41F7F10E500E251E9 /* NewsTableViewCell.xib in Resources */,
 				CB8C001C1F7D9F80009BCA6E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		CBA711EB1F7EF4E600E251E9 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CB8C000F1F7D9F80009BCA6E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */,
 				CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */,
+				CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */,
 				CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */,
 				CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */,
 			);
@@ -280,6 +346,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W56K4E4L5F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.timbaev.VKNews;
@@ -295,6 +365,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = W56K4E4L5F;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = ru.timbaev.VKNews;
