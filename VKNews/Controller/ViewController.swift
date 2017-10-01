@@ -12,6 +12,7 @@ import VKSdkFramework
 class ViewController: UIViewController, VKSdkDelegate {
     
     let scope = ["friends", "wall"]
+    let newsSegue = "newsSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +24,7 @@ class ViewController: UIViewController, VKSdkDelegate {
         VKSdk.wakeUpSession(scope) { (_ state: VKAuthorizationState, _ error: Error?) -> Void in
             switch state {
             case .authorized:
-                print("Authorized and ready to go")
+                self.performSegue(withIdentifier: self.newsSegue, sender: nil)
                 break
             case .initialized:
                 VKSdk.authorize(self.scope)
@@ -40,13 +41,10 @@ class ViewController: UIViewController, VKSdkDelegate {
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         print("Okey, we getted API key")
-        self.view.backgroundColor = UIColor.lightGray
-        
     }
     
     func vkSdkUserAuthorizationFailed() {
         print("Oups..failed")
-        self.view.backgroundColor = UIColor.red
     }
 
 }

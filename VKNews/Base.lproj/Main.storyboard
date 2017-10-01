@@ -41,7 +41,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <segue destination="2cY-l6-kyL" kind="show" id="Yd0-1w-eRI"/>
+                        <segue destination="2cY-l6-kyL" kind="show" identifier="newsSegue" id="Yd0-1w-eRI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -51,7 +51,7 @@
         <!--Новости-->
         <scene sceneID="RRX-2o-NVo">
             <objects>
-                <tableViewController id="qfc-Uy-TrV" sceneMemberID="viewController">
+                <tableViewController id="qfc-Uy-TrV" customClass="NewsTableViewController" customModule="VKNews" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TEL-GK-Y1h">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

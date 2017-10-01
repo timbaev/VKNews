@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB66998B1F805A7300489C6A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998A1F805A7300489C6A /* News.swift */; };
+		CB66998D1F805E4B00489C6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998C1F805E4B00489C6A /* Profile.swift */; };
+		CB66998F1F8061F800489C6A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998E1F8061F800489C6A /* Group.swift */; };
+		CB6699931F80650100489C6A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6699921F80650100489C6A /* SwiftyJSON.framework */; };
 		CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C00161F7D9F80009BCA6E /* AppDelegate.swift */; };
 		CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C00181F7D9F80009BCA6E /* ViewController.swift */; };
 		CB8C001C1F7D9F80009BCA6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8C001A1F7D9F80009BCA6E /* Main.storyboard */; };
@@ -20,6 +24,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		CB66998A1F805A7300489C6A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		CB66998C1F805E4B00489C6A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		CB66998E1F8061F800489C6A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
+		CB6699921F80650100489C6A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		CB8C00131F7D9F80009BCA6E /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8C00161F7D9F80009BCA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8C00181F7D9F80009BCA6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +48,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CBA711EA1F7EF4A900E251E9 /* VKSdkFramework.framework in Frameworks */,
+				CB6699931F80650100489C6A /* SwiftyJSON.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +91,7 @@
 		CBA711E81F7EF4A800E251E9 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CB6699921F80650100489C6A /* SwiftyJSON.framework */,
 				CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */,
 			);
 			name = Frameworks;
@@ -90,6 +100,9 @@
 		CBA711EC1F7F0FBA00E251E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB66998A1F805A7300489C6A /* News.swift */,
+				CB66998C1F805E4B00489C6A /* Profile.swift */,
+				CB66998E1F8061F800489C6A /* Group.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -189,6 +202,7 @@
 			);
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/VKSdkFramework.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwiftyJSON.framework",
 			);
 			outputPaths = (
 			);
@@ -206,6 +220,9 @@
 				CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */,
 				CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */,
 				CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */,
+				CB66998F1F8061F800489C6A /* Group.swift in Sources */,
+				CB66998B1F805A7300489C6A /* News.swift in Sources */,
+				CB66998D1F805E4B00489C6A /* Profile.swift in Sources */,
 				CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */,
 				CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */,
 			);
