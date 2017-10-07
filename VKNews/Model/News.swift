@@ -13,12 +13,18 @@ enum NewsType {
     case copy
 }
 
-struct News {
+struct News: CustomStringConvertible {
     
     let type: NewsType
     let sourceID: Int
     let date: Date
     let text: String
-    let photos: [UIImage]
+    let imagesURL: [String]
     
+    var description: String {
+        return "sourceID: \(sourceID)" + "\n" +
+            "date: \(date)" + "\n" +
+        "text: \(text)" + "\n" +
+        "imagesUR: \(imagesURL.description)"
+    }
 }

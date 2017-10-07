@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB2243A01F86D64000B68C06 /* WordEndPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22439F1F86D64000B68C06 /* WordEndPicker.swift */; };
+		CB2243A21F86D69400B68C06 /* DeclinedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2243A11F86D69400B68C06 /* DeclinedWord.swift */; };
+		CB2243A41F86D86300B68C06 /* ElapsedTimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */; };
+		CB5354471F86507F00F6ACD1 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5354461F86507F00F6ACD1 /* Source.swift */; };
 		CB66998B1F805A7300489C6A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998A1F805A7300489C6A /* News.swift */; };
 		CB66998D1F805E4B00489C6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998C1F805E4B00489C6A /* Profile.swift */; };
 		CB66998F1F8061F800489C6A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998E1F8061F800489C6A /* Group.swift */; };
@@ -17,13 +21,31 @@
 		CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CB8C001D1F7D9F80009BCA6E /* VKNews.xcdatamodeld */; };
 		CB8C00211F7D9F80009BCA6E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CB8C00201F7D9F80009BCA6E /* Assets.xcassets */; };
 		CB8C00241F7D9F80009BCA6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8C00221F7D9F80009BCA6E /* LaunchScreen.storyboard */; };
+		CB93F1241F8438A20060ED3A /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB93F1231F8438A20060ED3A /* ImageDownloader.swift */; };
 		CBA711EA1F7EF4A900E251E9 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */; };
 		CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */; };
 		CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */; };
 		CBA711F41F7F10E500E251E9 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		CB1842A91F82ED9A00DDE50F /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		CB22439F1F86D64000B68C06 /* WordEndPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEndPicker.swift; sourceTree = "<group>"; };
+		CB2243A11F86D69400B68C06 /* DeclinedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclinedWord.swift; sourceTree = "<group>"; };
+		CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeCounter.swift; sourceTree = "<group>"; };
+		CB5354461F86507F00F6ACD1 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
 		CB66998A1F805A7300489C6A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		CB66998C1F805E4B00489C6A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CB66998E1F8061F800489C6A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -36,6 +58,7 @@
 		CB8C00201F7D9F80009BCA6E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CB8C00231F7D9F80009BCA6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CB8C00251F7D9F80009BCA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CB93F1231F8438A20060ED3A /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
 		CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
 		CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -55,6 +78,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CB22439E1F86D5BA00B68C06 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				CB22439F1F86D64000B68C06 /* WordEndPicker.swift */,
+				CB2243A11F86D69400B68C06 /* DeclinedWord.swift */,
+				CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		CB8C000A1F7D9F80009BCA6E = {
 			isa = PBXGroup;
 			children = (
@@ -75,6 +108,7 @@
 		CB8C00151F7D9F80009BCA6E /* VKNews */ = {
 			isa = PBXGroup;
 			children = (
+				CB22439E1F86D5BA00B68C06 /* Utils */,
 				CBA711EE1F7F0FCE00E251E9 /* Controller */,
 				CBA711ED1F7F0FC700E251E9 /* View */,
 				CBA711EC1F7F0FBA00E251E9 /* Model */,
@@ -103,6 +137,7 @@
 				CB66998A1F805A7300489C6A /* News.swift */,
 				CB66998C1F805E4B00489C6A /* Profile.swift */,
 				CB66998E1F8061F800489C6A /* Group.swift */,
+				CB5354461F86507F00F6ACD1 /* Source.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -121,6 +156,7 @@
 			children = (
 				CB8C00181F7D9F80009BCA6E /* ViewController.swift */,
 				CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */,
+				CB93F1231F8438A20060ED3A /* ImageDownloader.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -136,6 +172,7 @@
 				CB8C00101F7D9F80009BCA6E /* Frameworks */,
 				CB8C00111F7D9F80009BCA6E /* Resources */,
 				CBA711EB1F7EF4E600E251E9 /* ShellScript */,
+				CB1842A91F82ED9A00DDE50F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -222,8 +259,13 @@
 				CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */,
 				CB66998F1F8061F800489C6A /* Group.swift in Sources */,
 				CB66998B1F805A7300489C6A /* News.swift in Sources */,
+				CB2243A21F86D69400B68C06 /* DeclinedWord.swift in Sources */,
 				CB66998D1F805E4B00489C6A /* Profile.swift in Sources */,
+				CB2243A41F86D86300B68C06 /* ElapsedTimeCounter.swift in Sources */,
 				CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */,
+				CB93F1241F8438A20060ED3A /* ImageDownloader.swift in Sources */,
+				CB2243A01F86D64000B68C06 /* WordEndPicker.swift in Sources */,
+				CB5354471F86507F00F6ACD1 /* Source.swift in Sources */,
 				CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -366,6 +408,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/VKNews",
 				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -385,6 +428,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/VKNews",
 				);
 				INFOPLIST_FILE = VKNews/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

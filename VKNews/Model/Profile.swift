@@ -8,12 +8,16 @@
 
 import UIKit
 
-struct Profile {
+struct Profile: Source, CustomStringConvertible {
     
-    let ID: Int
-    let name: String
+    var name: String
     let surname: String
-    let deactivated: String
-    let photo: UIImage
+    var photoURL: String
+    
+    var description: String {
+        return "name: \(name)" + "\n" +
+        "surname: \(surname)" + "\n" +
+        "photoURL: \(photoURL)"
+    }
     
 }

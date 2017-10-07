@@ -17,7 +17,9 @@ class ViewController: UIViewController, VKSdkDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        VKSdk.initialize(withAppId: "6201081")
+        if let sdk = VKSdk.initialize(withAppId: "6201081") {
+            sdk.register(self)
+        }
     }
     
     @IBAction func onLoginClick(_ sender: UIButton) {
@@ -40,7 +42,7 @@ class ViewController: UIViewController, VKSdkDelegate {
     
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
-        print("Okey, we getted API key")
+        performSegue(withIdentifier: newsSegue, sender: nil)
     }
     
     func vkSdkUserAuthorizationFailed() {

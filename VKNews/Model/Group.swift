@@ -8,10 +8,14 @@
 
 import UIKit
 
-struct Group {
+struct Group: Source, CustomStringConvertible {
     
-    let ID: Int
-    let name: String
-    let photo: UIImage
+    var name: String
+    var photoURL: String
+    
+    var description: String {
+        return "name: \(name)" + "\n" +
+        "photoURL: \(photoURL)"
+    }
     
 }

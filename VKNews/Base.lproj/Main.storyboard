@@ -12,7 +12,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="VKNews" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="loginViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="VKNews" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,22 +56,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="guB-82-BAX">
-                                <rect key="frame" x="0.0" y="28" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="guB-82-BAX" id="1z7-Oi-igH">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
                         <connections>
                             <outlet property="dataSource" destination="qfc-Uy-TrV" id="VrV-I4-UZL"/>
                             <outlet property="delegate" destination="qfc-Uy-TrV" id="yfJ-nD-jJn"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Новости" id="dzK-Kq-orR"/>
+                    <navigationItem key="navigationItem" title="Новости" id="dzK-Kq-orR">
+                        <barButtonItem key="rightBarButtonItem" image="exit" id="OdB-hG-qTZ">
+                            <connections>
+                                <action selector="onExitClick:" destination="qfc-Uy-TrV" id="mFD-FQ-TDy"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kI-5J-Dz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -96,4 +92,7 @@
             <point key="canvasLocation" x="954" y="117"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="exit" width="25" height="25"/>
+    </resources>
 </document>
