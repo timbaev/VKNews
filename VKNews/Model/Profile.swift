@@ -12,7 +12,7 @@ struct Profile: Source, CustomStringConvertible {
     
     var name: String
     let surname: String
-    var photoURL: String
+    var photoURL: URL
     
     var description: String {
         return "name: \(name)" + "\n" +

@@ -9,9 +9,9 @@
 import UIKit
 
 struct Group: Source, CustomStringConvertible {
-    
+
     var name: String
-    var photoURL: String
+    var photoURL: URL
     
     var description: String {
         return "name: \(name)" + "\n" +

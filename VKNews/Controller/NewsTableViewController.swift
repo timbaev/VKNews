@@ -17,6 +17,7 @@ class NewsTableViewController: UITableViewController {
     private var profiles = [Int : Profile]()
     
     let newsCellIndentifier = "newsCell"
+    let aboutNewsSegueIdentifier = "aboutNewsSegue"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +56,7 @@ class NewsTableViewController: UITableViewController {
         let itemsJSON = json["items"].arrayValue
         
         for itemJSON in itemsJSON {
-            var imagesURL = [String]()
+            var imagesURL = [URL]()
             
             let typeString = itemJSON["post_type"].stringValue
             let type = (typeString == "post") ? NewsType.post : NewsType.copy
@@ -68,7 +69,9 @@ class NewsTableViewController: UITableViewController {
             for attachment in attachments {
                 if attachment["type"].stringValue == "photo" {
                     let imageUrlJSON = attachment["photo"]["photo_604"].stringValue
-                    imagesURL.append(imageUrlJSON)
+                    if let imageURL = URL(string: imageUrlJSON) {
+                        imagesURL.append(imageURL)
+                    }
                 }
             }
             
@@ -82,7 +85,8 @@ class NewsTableViewController: UITableViewController {
             let profileID = profileJSON["id"].intValue
             let profileName = profileJSON["first_name"].stringValue
             let profileSurname = profileJSON["last_name"].stringValue
-            let photoURL = profileJSON["photo_100"].stringValue
+            let photoUrlString = profileJSON["photo_100"].stringValue
+            guard let photoURL = URL(string: photoUrlString) else { continue }
             
             let profile = Profile(name: profileName, surname: profileSurname, photoURL: photoURL)
             profiles[profileID] = profile
@@ -96,7 +100,8 @@ class NewsTableViewController: UITableViewController {
         for groupJSON in groupsJSON {
             let groupID = groupJSON["id"].intValue
             let groupName = groupJSON["name"].stringValue
-            let photoURL = groupJSON["photo_100"].stringValue
+            let photoUrlString = groupJSON["photo_100"].stringValue
+            guard let photoURL = URL(string: photoUrlString) else { continue }
             
             let group = Group(name: groupName, photoURL: photoURL)
             groups[groupID] = group
@@ -117,6 +122,18 @@ class NewsTableViewController: UITableViewController {
             self.present(loginController, animated: true, completion: nil)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == aboutNewsSegueIdentifier {
+            let row = sender as! Int
+            let targetNews = news[row]
+            if let source = getSourceNews(from: targetNews.sourceID) {
+                let aboutNewsController = segue.destination as! AboutNewsViewController
+                aboutNewsController.news = targetNews
+                aboutNewsController.source = source
+            }
+        }
+    }
 
     // MARK: - Table view data source
 
@@ -129,36 +146,48 @@ class NewsTableViewController: UITableViewController {
         return news.count
     }
     
+    private func getSourceNews(from sourceID: Int) -> Source? {
+        if sourceID > 0 {
+            return profiles[sourceID]
+        } else {
+            return groups[abs(sourceID)]
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: newsCellIndentifier, for: indexPath) as! NewsTableViewCell
         
         let news = self.news[indexPath.row]
         let sourceNewsID = news.sourceID
-        var source: Source!
-        if sourceNewsID > 0 {
-            source = profiles[sourceNewsID]!
+        if let source = getSourceNews(from: sourceNewsID) {
             cell.prepareCell(with: news, with: source)
-        } else {
-            source = groups[abs(sourceNewsID)]!
-            cell.prepareCell(with: news, with: source)
+            cell.avatarImageView.image = nil
+            cell.photoImageViews[0].setDefault()
+            cell.photoImageViews[1].setDefault()
+            cell.avatarImageView.kf.setImage(with: source.photoURL)
         }
-        
-        cell.avatarImageView.image = nil
-        cell.photoImageViews[0].image = nil
-        cell.photoImageViews[1].image = nil
-        cell.avatarImageView.downloadImageFrom(link: source.photoURL, contentMode: .scaleAspectFit)
-        
-        cell.photoImageViews[0].isHidden = true
-        cell.photoImageViews[1].isHidden = true
         
         for (i, imageURL) in news.imagesURL.enumerated() {
             if i == 2 { break }
             cell.photoImageViews[i].isHidden = false
-            cell.photoImageViews[i].downloadImageFrom(link: imageURL, contentMode: .scaleAspectFit)
+            cell.photoImageViews[i].kf.setImage(with: imageURL)
             cell.photoImageViews[i].backgroundColor = UIColor.white
         }
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: aboutNewsSegueIdentifier, sender: indexPath.row)
+    }
+}
 
+fileprivate extension UIImageView {
+    
+    func setDefault() {
+        self.image = nil
+        self.backgroundColor = .darkGray
+        self.isHidden = true
+    }
+    
 }

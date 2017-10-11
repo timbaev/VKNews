@@ -10,5 +10,5 @@ import UIKit
 
 protocol Source {
     var name: String { get set }
-    var photoURL: String { get set }
+    var photoURL: URL { get set }
 }

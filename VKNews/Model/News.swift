@@ -19,7 +19,7 @@ struct News: CustomStringConvertible {
     let sourceID: Int
     let date: Date
     let text: String
-    let imagesURL: [String]
+    let imagesURL: [URL]
     
     var description: String {
         return "sourceID: \(sourceID)" + "\n" +
