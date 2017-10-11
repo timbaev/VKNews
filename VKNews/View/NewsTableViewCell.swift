@@ -1,15 +1,15 @@
 //
-//  NewsTableViewCell.swift
+//  NewsTestTableViewCell.swift
 //  VKNews
 //
-//  Created by Тимур Шафигуллин on 30.09.17.
+//  Created by Тимур Шафигуллин on 12.10.17.
 //  Copyright © 2017 iOS Lab ITIS. All rights reserved.
 //
 
 import UIKit
 
 class NewsTableViewCell: UITableViewCell {
-    
+
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
@@ -27,10 +27,10 @@ class NewsTableViewCell: UITableViewCell {
         moreButton.setImage(tintedImage, for: .normal)
         moreButton.tintColor = .darkGray
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
@@ -45,5 +45,5 @@ class NewsTableViewCell: UITableViewCell {
         dateLabel.text = Date().offset(from: news.date)
         textNewsLabel.text = news.text
     }
-    
+
 }

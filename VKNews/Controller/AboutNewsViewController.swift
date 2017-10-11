@@ -15,6 +15,8 @@ class AboutNewsViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var contentScrollView: UIScrollView!
+    @IBOutlet weak var contentStackView: UIStackView!
     
     let imageCellIdentifier = "imageCell"
     var news: News!
@@ -27,6 +29,10 @@ class AboutNewsViewController: UIViewController, UICollectionViewDataSource, UIC
         if news.imagesURL.count == 0 {
             collectionView.isHidden = true
         }
+    }
+    
+    private func prepareContentSize() {
+        
     }
     
     private func prepareController() {

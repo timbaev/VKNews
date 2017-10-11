@@ -19,6 +19,8 @@
 		CB66998F1F8061F800489C6A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998E1F8061F800489C6A /* Group.swift */; };
 		CB6699931F80650100489C6A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6699921F80650100489C6A /* SwiftyJSON.framework */; };
 		CB8416D31F8EBC7500A47A08 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8416D21F8EBC7400A47A08 /* Kingfisher.framework */; };
+		CB8416D51F8EC36D00A47A08 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */; };
+		CB8416D71F8ED59F00A47A08 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */; };
 		CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C00161F7D9F80009BCA6E /* AppDelegate.swift */; };
 		CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8C00181F7D9F80009BCA6E /* ViewController.swift */; };
 		CB8C001C1F7D9F80009BCA6E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8C001A1F7D9F80009BCA6E /* Main.storyboard */; };
@@ -27,8 +29,6 @@
 		CB8C00241F7D9F80009BCA6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CB8C00221F7D9F80009BCA6E /* LaunchScreen.storyboard */; };
 		CBA711EA1F7EF4A900E251E9 /* VKSdkFramework.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */; };
 		CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */; };
-		CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */; };
-		CBA711F41F7F10E500E251E9 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -57,6 +57,8 @@
 		CB66998E1F8061F800489C6A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CB6699921F80650100489C6A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
 		CB8416D21F8EBC7400A47A08 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
+		CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
+		CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		CB8C00131F7D9F80009BCA6E /* VKNews.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VKNews.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CB8C00161F7D9F80009BCA6E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CB8C00181F7D9F80009BCA6E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -67,8 +69,6 @@
 		CB8C00251F7D9F80009BCA6E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CBA711E91F7EF4A900E251E9 /* VKSdkFramework.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VKSdkFramework.framework; path = Carthage/Build/iOS/VKSdkFramework.framework; sourceTree = "<group>"; };
 		CBA711EF1F7F104C00E251E9 /* NewsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewController.swift; sourceTree = "<group>"; };
-		CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
-		CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,9 +154,9 @@
 		CBA711ED1F7F0FC700E251E9 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CBA711F11F7F10E500E251E9 /* NewsTableViewCell.swift */,
-				CBA711F21F7F10E500E251E9 /* NewsTableViewCell.xib */,
 				CB51CDBB1F89357E0070D0F3 /* ImageCollectionViewCell.swift */,
+				CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */,
+				CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -234,8 +234,8 @@
 			files = (
 				CB8C00241F7D9F80009BCA6E /* LaunchScreen.storyboard in Resources */,
 				CB8C00211F7D9F80009BCA6E /* Assets.xcassets in Resources */,
-				CBA711F41F7F10E500E251E9 /* NewsTableViewCell.xib in Resources */,
 				CB8C001C1F7D9F80009BCA6E /* Main.storyboard in Resources */,
+				CB8416D51F8EC36D00A47A08 /* NewsTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -267,10 +267,10 @@
 			files = (
 				CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */,
 				CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */,
-				CBA711F31F7F10E500E251E9 /* NewsTableViewCell.swift in Sources */,
 				CB66998F1F8061F800489C6A /* Group.swift in Sources */,
 				CB66998B1F805A7300489C6A /* News.swift in Sources */,
 				CB2243A21F86D69400B68C06 /* DeclinedWord.swift in Sources */,
+				CB8416D71F8ED59F00A47A08 /* NewsTableViewCell.swift in Sources */,
 				CB51CDBD1F89357E0070D0F3 /* ImageCollectionViewCell.swift in Sources */,
 				CB66998D1F805E4B00489C6A /* Profile.swift in Sources */,
 				CB2243A41F86D86300B68C06 /* ElapsedTimeCounter.swift in Sources */,

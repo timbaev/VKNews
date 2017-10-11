@@ -88,7 +88,7 @@
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OkB-jC-xcK">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="vbq-sc-hiL">
                                                 <rect key="frame" x="8" y="8" width="50" height="50"/>
@@ -104,7 +104,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="1TS-Fr-ycq">
-                                                <rect key="frame" x="8" y="66" width="304" height="438"/>
+                                                <rect key="frame" x="8" y="66" width="304" height="502"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fRy-fu-vrh">
                                                         <rect key="frame" x="0.0" y="0.0" width="304" height="20.5"/>
@@ -113,7 +113,7 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="t74-yP-d39">
-                                                        <rect key="frame" x="0.0" y="28.5" width="304" height="409.5"/>
+                                                        <rect key="frame" x="0.0" y="28.5" width="304" height="473.5"/>
                                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="B7z-HL-Dh5">
                                                             <size key="itemSize" width="130" height="133"/>
@@ -157,7 +157,6 @@
                                         <constraints>
                                             <constraint firstItem="vbq-sc-hiL" firstAttribute="top" secondItem="OkB-jC-xcK" secondAttribute="top" constant="8" id="9L7-BH-ytt"/>
                                             <constraint firstAttribute="trailing" secondItem="1TS-Fr-ycq" secondAttribute="trailing" constant="8" id="BDs-Fb-SxW"/>
-                                            <constraint firstAttribute="height" constant="504" id="FFB-Gn-aMW"/>
                                             <constraint firstItem="1TS-Fr-ycq" firstAttribute="top" secondItem="vbq-sc-hiL" secondAttribute="bottom" constant="8" id="FbP-4T-q2F"/>
                                             <constraint firstItem="X8U-g6-IHY" firstAttribute="leading" secondItem="vbq-sc-hiL" secondAttribute="trailing" constant="8" id="GV0-zM-Svq"/>
                                             <constraint firstItem="1TS-Fr-ycq" firstAttribute="leading" secondItem="OkB-jC-xcK" secondAttribute="leading" constant="8" id="Lzo-tf-GL1"/>
@@ -180,6 +179,7 @@
                         <constraints>
                             <constraint firstItem="bQA-Ax-cS6" firstAttribute="trailing" secondItem="UAR-ER-wms" secondAttribute="trailing" id="1xG-TG-PHQ"/>
                             <constraint firstItem="bQA-Ax-cS6" firstAttribute="top" secondItem="UAR-ER-wms" secondAttribute="top" id="MEc-ex-98o"/>
+                            <constraint firstItem="OkB-jC-xcK" firstAttribute="height" secondItem="YiH-AP-NOU" secondAttribute="height" priority="250" id="QAn-i6-2Df"/>
                             <constraint firstItem="bQA-Ax-cS6" firstAttribute="bottom" secondItem="UAR-ER-wms" secondAttribute="bottom" id="cuo-ha-7Ru"/>
                             <constraint firstItem="bQA-Ax-cS6" firstAttribute="leading" secondItem="UAR-ER-wms" secondAttribute="leading" id="o4Q-7Z-Q7i"/>
                             <constraint firstItem="OkB-jC-xcK" firstAttribute="width" secondItem="YiH-AP-NOU" secondAttribute="width" id="p6X-2o-AO9"/>
@@ -189,6 +189,8 @@
                     <connections>
                         <outlet property="avatarImageView" destination="vbq-sc-hiL" id="s9i-xZ-HcB"/>
                         <outlet property="collectionView" destination="t74-yP-d39" id="MEc-kg-40F"/>
+                        <outlet property="contentScrollView" destination="bQA-Ax-cS6" id="by8-LL-iPf"/>
+                        <outlet property="contentStackView" destination="1TS-Fr-ycq" id="9wm-T4-aQp"/>
                         <outlet property="nameLabel" destination="X8U-g6-IHY" id="UY2-75-MEz"/>
                         <outlet property="textLabel" destination="fRy-fu-vrh" id="sh2-eX-Tw3"/>
                     </connections>
