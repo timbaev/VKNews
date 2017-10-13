@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CB1323831F902B0B00F27CA0 /* SourceManaged+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13237D1F902B0B00F27CA0 /* SourceManaged+CoreDataClass.swift */; };
+		CB1323851F902B0B00F27CA0 /* NewsManaged+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13237F1F902B0B00F27CA0 /* NewsManaged+CoreDataClass.swift */; };
+		CB1323901F902C3000F27CA0 /* NewsManaged+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13238A1F902C3000F27CA0 /* NewsManaged+CoreDataProperties.swift */; };
+		CB1323921F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB13238C1F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift */; };
 		CB2243A01F86D64000B68C06 /* WordEndPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB22439F1F86D64000B68C06 /* WordEndPicker.swift */; };
 		CB2243A21F86D69400B68C06 /* DeclinedWord.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2243A11F86D69400B68C06 /* DeclinedWord.swift */; };
 		CB2243A41F86D86300B68C06 /* ElapsedTimeCounter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */; };
@@ -14,6 +18,9 @@
 		CB51CDBD1F89357E0070D0F3 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDBB1F89357E0070D0F3 /* ImageCollectionViewCell.swift */; };
 		CB51CDC01F89390E0070D0F3 /* ImageRounder.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB51CDBF1F89390E0070D0F3 /* ImageRounder.swift */; };
 		CB5354471F86507F00F6ACD1 /* Source.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5354461F86507F00F6ACD1 /* Source.swift */; };
+		CB582CB01F901E13005A03B6 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB582CAF1F901E13005A03B6 /* CoreDataManager.swift */; };
+		CB5AB7E41F913C97001FC796 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5AB7E31F913C97001FC796 /* CoreDataStore.swift */; };
+		CB5AB7E61F917DF5001FC796 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB5AB7E51F917DF5001FC796 /* Config.swift */; };
 		CB66998B1F805A7300489C6A /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998A1F805A7300489C6A /* News.swift */; };
 		CB66998D1F805E4B00489C6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998C1F805E4B00489C6A /* Profile.swift */; };
 		CB66998F1F8061F800489C6A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998E1F8061F800489C6A /* Group.swift */; };
@@ -45,6 +52,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CB13237D1F902B0B00F27CA0 /* SourceManaged+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SourceManaged+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CB13237F1F902B0B00F27CA0 /* NewsManaged+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsManaged+CoreDataClass.swift"; sourceTree = "<group>"; };
+		CB13238A1F902C3000F27CA0 /* NewsManaged+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NewsManaged+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		CB13238C1F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SourceManaged+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		CB22439F1F86D64000B68C06 /* WordEndPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordEndPicker.swift; sourceTree = "<group>"; };
 		CB2243A11F86D69400B68C06 /* DeclinedWord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeclinedWord.swift; sourceTree = "<group>"; };
 		CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ElapsedTimeCounter.swift; sourceTree = "<group>"; };
@@ -52,6 +63,9 @@
 		CB51CDBB1F89357E0070D0F3 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		CB51CDBF1F89390E0070D0F3 /* ImageRounder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageRounder.swift; sourceTree = "<group>"; };
 		CB5354461F86507F00F6ACD1 /* Source.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Source.swift; sourceTree = "<group>"; };
+		CB582CAF1F901E13005A03B6 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		CB5AB7E31F913C97001FC796 /* CoreDataStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
+		CB5AB7E51F917DF5001FC796 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
 		CB66998A1F805A7300489C6A /* News.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
 		CB66998C1F805E4B00489C6A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CB66998E1F8061F800489C6A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
@@ -88,12 +102,26 @@
 		CB22439E1F86D5BA00B68C06 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CB582CAF1F901E13005A03B6 /* CoreDataManager.swift */,
 				CB22439F1F86D64000B68C06 /* WordEndPicker.swift */,
 				CB2243A11F86D69400B68C06 /* DeclinedWord.swift */,
 				CB2243A31F86D86300B68C06 /* ElapsedTimeCounter.swift */,
 				CB51CDBF1F89390E0070D0F3 /* ImageRounder.swift */,
+				CB5AB7E31F913C97001FC796 /* CoreDataStore.swift */,
+				CB5AB7E51F917DF5001FC796 /* Config.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		CB582CAE1F901D26005A03B6 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				CB13238A1F902C3000F27CA0 /* NewsManaged+CoreDataProperties.swift */,
+				CB13238C1F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift */,
+				CB13237D1F902B0B00F27CA0 /* SourceManaged+CoreDataClass.swift */,
+				CB13237F1F902B0B00F27CA0 /* NewsManaged+CoreDataClass.swift */,
+			);
+			path = CoreData;
 			sourceTree = "<group>";
 		};
 		CB8C000A1F7D9F80009BCA6E = {
@@ -143,6 +171,7 @@
 		CBA711EC1F7F0FBA00E251E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CB582CAE1F901D26005A03B6 /* CoreData */,
 				CB66998A1F805A7300489C6A /* News.swift */,
 				CB66998C1F805E4B00489C6A /* Profile.swift */,
 				CB66998E1F8061F800489C6A /* Group.swift */,
@@ -265,18 +294,25 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CB1323831F902B0B00F27CA0 /* SourceManaged+CoreDataClass.swift in Sources */,
 				CBA711F01F7F104C00E251E9 /* NewsTableViewController.swift in Sources */,
 				CB8C00191F7D9F80009BCA6E /* ViewController.swift in Sources */,
 				CB66998F1F8061F800489C6A /* Group.swift in Sources */,
 				CB66998B1F805A7300489C6A /* News.swift in Sources */,
 				CB2243A21F86D69400B68C06 /* DeclinedWord.swift in Sources */,
 				CB8416D71F8ED59F00A47A08 /* NewsTableViewCell.swift in Sources */,
+				CB1323851F902B0B00F27CA0 /* NewsManaged+CoreDataClass.swift in Sources */,
 				CB51CDBD1F89357E0070D0F3 /* ImageCollectionViewCell.swift in Sources */,
+				CB5AB7E41F913C97001FC796 /* CoreDataStore.swift in Sources */,
 				CB66998D1F805E4B00489C6A /* Profile.swift in Sources */,
+				CB582CB01F901E13005A03B6 /* CoreDataManager.swift in Sources */,
+				CB1323901F902C3000F27CA0 /* NewsManaged+CoreDataProperties.swift in Sources */,
 				CB2243A41F86D86300B68C06 /* ElapsedTimeCounter.swift in Sources */,
 				CB8C001F1F7D9F80009BCA6E /* VKNews.xcdatamodeld in Sources */,
+				CB5AB7E61F917DF5001FC796 /* Config.swift in Sources */,
 				CB2243A01F86D64000B68C06 /* WordEndPicker.swift in Sources */,
 				CB5354471F86507F00F6ACD1 /* Source.swift in Sources */,
+				CB1323921F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift in Sources */,
 				CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */,
 				CB51CDB81F892D280070D0F3 /* AboutNewsViewController.swift in Sources */,
 				CB51CDC01F89390E0070D0F3 /* ImageRounder.swift in Sources */,

@@ -9,6 +9,7 @@
 import UIKit
 import VKSdkFramework
 import SwiftyJSON
+import CoreData
 
 class NewsTableViewController: UITableViewController {
     
@@ -23,7 +24,9 @@ class NewsTableViewController: UITableViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 350
-
+        
+        checkSession()
+        restoreNewsVK()
         registerCell()
         getNewsVK()
     }
@@ -31,6 +34,20 @@ class NewsTableViewController: UITableViewController {
     private func registerCell() {
         let nib = UINib(nibName: "NewsTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: newsCellIndentifier)
+    }
+    
+    private func checkSession() {
+        VKSdk.wakeUpSession(scope) { (state, error) in
+            if state == .initialized {
+                self.logOut()
+            }
+        }
+    }
+    
+    private func restoreNewsVK() {
+        news = CoreDataStore.getNews()
+        groups = CoreDataStore.getGroups()
+        profiles = CoreDataStore.getProfiles()
     }
     
     private func getNewsVK() {
@@ -53,6 +70,12 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func prepareData(with json: JSON) {
+        CoreDataStore.deleteAllData(entity: "NewsManaged")
+        CoreDataStore.deleteAllData(entity: "SourceManaged")
+        news.removeAll()
+        profiles.removeAll()
+        groups.removeAll()
+        
         let itemsJSON = json["items"].arrayValue
         
         for itemJSON in itemsJSON {
@@ -75,7 +98,9 @@ class NewsTableViewController: UITableViewController {
                 }
             }
             
-            news.append(News(type: type, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL))
+            let newsStruct = News(type: type, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL)
+            news.append(newsStruct)
+            CoreDataStore.save(news: newsStruct)
         }
         
         news.forEach { print("--------------------------------"); print($0) }
@@ -90,6 +115,7 @@ class NewsTableViewController: UITableViewController {
             
             let profile = Profile(name: profileName, surname: profileSurname, photoURL: photoURL)
             profiles[profileID] = profile
+            CoreDataStore.save(source: profile, with: profileID)
             
             print("--------------------------------")
             print("profileID: \(profileID)")
@@ -104,7 +130,8 @@ class NewsTableViewController: UITableViewController {
             guard let photoURL = URL(string: photoUrlString) else { continue }
             
             let group = Group(name: groupName, photoURL: photoURL)
-            groups[groupID] = group
+            groups[-groupID] = group
+            CoreDataStore.save(source: group, with: -groupID)
             
             print("--------------------------------")
             print("groupID: \(groupID)")
@@ -115,10 +142,15 @@ class NewsTableViewController: UITableViewController {
     
     
     @IBAction func onExitClick(_ sender: UIBarButtonItem) {
+        logOut()
+    }
+        
+    private func logOut() {
         if let storyboard = self.storyboard {
             VKSdk.forceLogout()
+            UserDefaults.standard.set(false, forKey: authorizedKey)
             
-            let loginController = storyboard.instantiateViewController(withIdentifier: "loginViewController")
+            let loginController = storyboard.instantiateViewController(withIdentifier: loginControllerIdentifier)
             self.present(loginController, animated: true, completion: nil)
         }
     }
@@ -150,7 +182,7 @@ class NewsTableViewController: UITableViewController {
         if sourceID > 0 {
             return profiles[sourceID]
         } else {
-            return groups[abs(sourceID)]
+            return groups[sourceID]
         }
     }
     

@@ -31,10 +31,6 @@ class AboutNewsViewController: UIViewController, UICollectionViewDataSource, UIC
         }
     }
     
-    private func prepareContentSize() {
-        
-    }
-    
     private func prepareController() {
         avatarImageView.roundCorners()
         avatarImageView.kf.setImage(with: source.photoURL)

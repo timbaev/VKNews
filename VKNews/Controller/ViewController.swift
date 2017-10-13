@@ -11,7 +11,6 @@ import VKSdkFramework
 
 class ViewController: UIViewController, VKSdkDelegate {
     
-    let scope = ["friends", "wall"]
     let newsSegue = "newsSegue"
     
     override func viewDidLoad() {
@@ -29,7 +28,7 @@ class ViewController: UIViewController, VKSdkDelegate {
                 self.performSegue(withIdentifier: self.newsSegue, sender: nil)
                 break
             case .initialized:
-                VKSdk.authorize(self.scope)
+                VKSdk.authorize(scope)
                 break
             case .error:
                 print("Some error happend, but you may try later")
@@ -42,6 +41,7 @@ class ViewController: UIViewController, VKSdkDelegate {
     
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
+        UserDefaults.standard.set(true, forKey: authorizedKey)
         performSegue(withIdentifier: newsSegue, sender: nil)
     }
     
