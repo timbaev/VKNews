@@ -22,6 +22,7 @@ class NewsTableViewController: UITableViewController {
     
     let countRow = 20
     var loadMoreStatus = false
+    var nextFrom: String?
     
     var footerView: LoadMoreView!
 
@@ -33,7 +34,13 @@ class NewsTableViewController: UITableViewController {
         checkSession()
         restoreNewsVK()
         registerCell()
-        getNewsVK()
+        getNewsVK(append: false) { (success) in
+            DispatchQueue.main.async {
+                if (success) {
+                    self.tableView.reloadData()
+                }
+            }
+        }
     }
     
     private func prepareTableView() {
@@ -54,21 +61,13 @@ class NewsTableViewController: UITableViewController {
     }
     
     @objc private func refresh(sender: AnyObject) {
-        refreshBegin(newText: "Test") { (result) in
-            self.tableView.reloadData()
-            self.refreshControl?.endRefreshing()
-        }
-    }
-    
-    private func refreshBegin(newText: String, refreshEnd: @escaping (Int) -> ()) {
         DispatchQueue.global(qos: .userInitiated).async {
-            print("refreshing")
-            //logic here
-            sleep(2)
-            
-            DispatchQueue.main.async {
-                refreshEnd(0)
-            }
+            self.getNewsVK(append: false, loadEnd: { (success) in
+                DispatchQueue.main.async {
+                    self.tableView.refreshControl?.endRefreshing()
+                    self.tableView.reloadData()
+                }
+            })
         }
     }
     
@@ -88,23 +87,13 @@ class NewsTableViewController: UITableViewController {
             loadMoreStatus = true
             footerView.loadMoreIndicator.startAnimating()
             tableView.tableFooterView?.isHidden = false
-            loadMoreBegin(newText: "LoadMore", loadMoreEnd: { (result) in
-                self.tableView.reloadData()
-                self.loadMoreStatus = false
-                self.footerView.loadMoreIndicator.stopAnimating()
-                self.tableView.tableFooterView?.isHidden = true
-            })
-        }
-    }
-    
-    private func loadMoreBegin(newText: String, loadMoreEnd: @escaping (Int) -> ()) {
-        DispatchQueue.global(qos: .userInitiated).async {
-            print("loadMore")
-            //login here
-            sleep(2)
-            
-            DispatchQueue.main.async {
-                loadMoreEnd(0)
+            DispatchQueue.global(qos: .userInitiated).async {
+                self.getNewsVK(append: true, loadEnd: { (success) in
+                    self.tableView.reloadData()
+                    self.loadMoreStatus = false
+                    self.footerView.loadMoreIndicator.stopAnimating()
+                    self.tableView.tableFooterView?.isHidden = true
+                })
             }
         }
     }
@@ -128,31 +117,38 @@ class NewsTableViewController: UITableViewController {
         profiles = CoreDataStore.getProfiles()
     }
     
-    private func getNewsVK() {
-        let getParameters: [String : Any]? = ["filters" : "post", "max_photos" : "2", "count":"\(countRow)"]
+    private func getNewsVK(append: Bool, loadEnd: @escaping (Bool) -> ()) {
+        var getParameters: [String : Any] = ["filters" : "post", "max_photos" : "2", "count":"\(countRow)"]
+        if (append) {
+            if let startFrom = nextFrom {
+                getParameters["start_from"] = startFrom
+            }
+        }
+        
         if let request = VKRequest(method: "newsfeed.get", parameters: getParameters) {
             request.execute(resultBlock: { (response) in
                 if let jsonResponse = response {
                     print(jsonResponse.json)
                     let json = JSON(jsonResponse.json)
-                    self.prepareData(with: json)
-                    DispatchQueue.main.async {
-                        self.tableView.reloadData()
-                    }
+                    self.prepareData(with: json, append: append)
+                    loadEnd(true)
                 }
             }, errorBlock: { (error) in
+                loadEnd(false)
                 print("error")
             })
         }
         
     }
     
-    private func prepareData(with json: JSON) {
-        CoreDataStore.deleteAllData(entity: "NewsManaged")
-        CoreDataStore.deleteAllData(entity: "SourceManaged")
-        news.removeAll()
-        profiles.removeAll()
-        groups.removeAll()
+    private func prepareData(with json: JSON, append: Bool) {
+        if (!append) {
+            CoreDataStore.deleteAllData(entity: "NewsManaged")
+            CoreDataStore.deleteAllData(entity: "SourceManaged")
+            news.removeAll()
+            profiles.removeAll()
+            groups.removeAll()
+        }
         
         let itemsJSON = json["items"].arrayValue
         
@@ -215,6 +211,8 @@ class NewsTableViewController: UITableViewController {
             print("groupID: \(groupID)")
             print(group)
         }
+        
+        nextFrom = json["next_from"].stringValue
     }
     
     
