@@ -25,6 +25,8 @@
 		CB66998D1F805E4B00489C6A /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998C1F805E4B00489C6A /* Profile.swift */; };
 		CB66998F1F8061F800489C6A /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB66998E1F8061F800489C6A /* Group.swift */; };
 		CB6699931F80650100489C6A /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB6699921F80650100489C6A /* SwiftyJSON.framework */; };
+		CB7686A71F921189001BA5D2 /* LoadMoreView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB7686A61F921188001BA5D2 /* LoadMoreView.xib */; };
+		CB7686A91F92139C001BA5D2 /* LoadMoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB7686A81F92139C001BA5D2 /* LoadMoreView.swift */; };
 		CB8416D31F8EBC7500A47A08 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CB8416D21F8EBC7400A47A08 /* Kingfisher.framework */; };
 		CB8416D51F8EC36D00A47A08 /* NewsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */; };
 		CB8416D71F8ED59F00A47A08 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */; };
@@ -70,6 +72,8 @@
 		CB66998C1F805E4B00489C6A /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		CB66998E1F8061F800489C6A /* Group.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Group.swift; sourceTree = "<group>"; };
 		CB6699921F80650100489C6A /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = Carthage/Build/iOS/SwiftyJSON.framework; sourceTree = "<group>"; };
+		CB7686A61F921188001BA5D2 /* LoadMoreView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoadMoreView.xib; sourceTree = "<group>"; };
+		CB7686A81F92139C001BA5D2 /* LoadMoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadMoreView.swift; sourceTree = "<group>"; };
 		CB8416D21F8EBC7400A47A08 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewsTableViewCell.xib; sourceTree = "<group>"; };
 		CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
@@ -186,6 +190,8 @@
 				CB51CDBB1F89357E0070D0F3 /* ImageCollectionViewCell.swift */,
 				CB8416D41F8EC36D00A47A08 /* NewsTableViewCell.xib */,
 				CB8416D61F8ED59E00A47A08 /* NewsTableViewCell.swift */,
+				CB7686A61F921188001BA5D2 /* LoadMoreView.xib */,
+				CB7686A81F92139C001BA5D2 /* LoadMoreView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -265,6 +271,7 @@
 				CB8C00211F7D9F80009BCA6E /* Assets.xcassets in Resources */,
 				CB8C001C1F7D9F80009BCA6E /* Main.storyboard in Resources */,
 				CB8416D51F8EC36D00A47A08 /* NewsTableViewCell.xib in Resources */,
+				CB7686A71F921189001BA5D2 /* LoadMoreView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +320,7 @@
 				CB2243A01F86D64000B68C06 /* WordEndPicker.swift in Sources */,
 				CB5354471F86507F00F6ACD1 /* Source.swift in Sources */,
 				CB1323921F902C3000F27CA0 /* SourceManaged+CoreDataProperties.swift in Sources */,
+				CB7686A91F92139C001BA5D2 /* LoadMoreView.swift in Sources */,
 				CB8C00171F7D9F80009BCA6E /* AppDelegate.swift in Sources */,
 				CB51CDB81F892D280070D0F3 /* AboutNewsViewController.swift in Sources */,
 				CB51CDC01F89390E0070D0F3 /* ImageRounder.swift in Sources */,

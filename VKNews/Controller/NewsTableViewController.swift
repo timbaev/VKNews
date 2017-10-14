@@ -19,16 +19,94 @@ class NewsTableViewController: UITableViewController {
     
     let newsCellIndentifier = "newsCell"
     let aboutNewsSegueIdentifier = "aboutNewsSegue"
+    
+    let countRow = 20
+    var loadMoreStatus = false
+    
+    var footerView: LoadMoreView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 350
         
+        prepareTableView()
+        prepareRefrechControl()
         checkSession()
         restoreNewsVK()
         registerCell()
         getNewsVK()
+    }
+    
+    private func prepareTableView() {
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 350
+        tableView.tableFooterView?.isHidden = true
+        footerView = LoadMoreView.instanceFromNib()
+        tableView.tableFooterView = footerView
+    }
+    
+    private func prepareRefrechControl() {
+        refreshControl = UIRefreshControl()
+        
+        if let refreshControl = refreshControl {
+            refreshControl.attributedTitle = NSAttributedString(string: "Идет обновление...")
+            refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
+        }
+    }
+    
+    @objc private func refresh(sender: AnyObject) {
+        refreshBegin(newText: "Test") { (result) in
+            self.tableView.reloadData()
+            self.refreshControl?.endRefreshing()
+        }
+    }
+    
+    private func refreshBegin(newText: String, refreshEnd: @escaping (Int) -> ()) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            print("refreshing")
+            //logic here
+            sleep(2)
+            
+            DispatchQueue.main.async {
+                refreshEnd(0)
+            }
+        }
+    }
+    
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset.y
+        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
+        
+        let deltaOffset = maximumOffset - currentOffset
+        
+        if deltaOffset <= 0 {
+            loadMore()
+        }
+    }
+    
+    private func loadMore() {
+        if (!loadMoreStatus) {
+            loadMoreStatus = true
+            footerView.loadMoreIndicator.startAnimating()
+            tableView.tableFooterView?.isHidden = false
+            loadMoreBegin(newText: "LoadMore", loadMoreEnd: { (result) in
+                self.tableView.reloadData()
+                self.loadMoreStatus = false
+                self.footerView.loadMoreIndicator.stopAnimating()
+                self.tableView.tableFooterView?.isHidden = true
+            })
+        }
+    }
+    
+    private func loadMoreBegin(newText: String, loadMoreEnd: @escaping (Int) -> ()) {
+        DispatchQueue.global(qos: .userInitiated).async {
+            print("loadMore")
+            //login here
+            sleep(2)
+            
+            DispatchQueue.main.async {
+                loadMoreEnd(0)
+            }
+        }
     }
     
     private func registerCell() {
@@ -51,7 +129,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func getNewsVK() {
-        let getParameters: [String : Any]? = ["filters" : "post", "max_photos" : "2", "count":"20"]
+        let getParameters: [String : Any]? = ["filters" : "post", "max_photos" : "2", "count":"\(countRow)"]
         if let request = VKRequest(method: "newsfeed.get", parameters: getParameters) {
             request.execute(resultBlock: { (response) in
                 if let jsonResponse = response {
