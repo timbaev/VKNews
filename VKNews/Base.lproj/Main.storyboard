@@ -74,7 +74,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1kI-5J-Dz1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1749.375" y="117.25352112676056"/>
+            <point key="canvasLocation" x="1073" y="117"/>
         </scene>
         <!--About News View Controller-->
         <scene sceneID="hUe-XM-SBi">
@@ -152,10 +152,19 @@
                                                     </collectionView>
                                                 </subviews>
                                             </stackView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="post date" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyF-CQ-xlA">
+                                                <rect key="frame" x="66" y="31" width="72.5" height="20.5"/>
+                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="DyF-CQ-xlA" firstAttribute="leading" secondItem="X8U-g6-IHY" secondAttribute="leading" id="3jg-VP-dsD"/>
+                                            <constraint firstItem="DyF-CQ-xlA" firstAttribute="top" secondItem="X8U-g6-IHY" secondAttribute="bottom" constant="2.5" id="52p-wq-f4a"/>
                                             <constraint firstItem="vbq-sc-hiL" firstAttribute="top" secondItem="OkB-jC-xcK" secondAttribute="top" constant="8" id="9L7-BH-ytt"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="DyF-CQ-xlA" secondAttribute="trailing" constant="20" symbolic="YES" id="AO0-4j-pXg"/>
                                             <constraint firstAttribute="trailing" secondItem="1TS-Fr-ycq" secondAttribute="trailing" constant="8" id="BDs-Fb-SxW"/>
                                             <constraint firstItem="1TS-Fr-ycq" firstAttribute="top" secondItem="vbq-sc-hiL" secondAttribute="bottom" constant="8" id="FbP-4T-q2F"/>
                                             <constraint firstItem="X8U-g6-IHY" firstAttribute="leading" secondItem="vbq-sc-hiL" secondAttribute="trailing" constant="8" id="GV0-zM-Svq"/>
@@ -192,12 +201,13 @@
                         <outlet property="contentScrollView" destination="bQA-Ax-cS6" id="by8-LL-iPf"/>
                         <outlet property="contentStackView" destination="1TS-Fr-ycq" id="9wm-T4-aQp"/>
                         <outlet property="nameLabel" destination="X8U-g6-IHY" id="UY2-75-MEz"/>
+                        <outlet property="postDateLabel" destination="DyF-CQ-xlA" id="pqg-BJ-QM8"/>
                         <outlet property="textLabel" destination="fRy-fu-vrh" id="sh2-eX-Tw3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yAa-Vl-eyh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2540.625" y="116.19718309859155"/>
+            <point key="canvasLocation" x="1520" y="117"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="3Ky-bN-goq">
@@ -215,7 +225,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="RAn-Yq-SX1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="954" y="117"/>
+            <point key="canvasLocation" x="574" y="116"/>
         </scene>
     </scenes>
     <resources>

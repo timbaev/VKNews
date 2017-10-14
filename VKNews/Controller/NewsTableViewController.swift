@@ -77,7 +77,7 @@ class NewsTableViewController: UITableViewController {
         
         let deltaOffset = maximumOffset - currentOffset
         
-        if deltaOffset <= 0 {
+        if deltaOffset <= 0, news.count != 0 {
             loadMore()
         }
     }

@@ -15,6 +15,7 @@ class AboutNewsViewController: UIViewController, UICollectionViewDataSource, UIC
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var postDateLabel: UILabel!
     @IBOutlet weak var contentScrollView: UIScrollView!
     @IBOutlet weak var contentStackView: UIStackView!
     
@@ -41,6 +42,7 @@ class AboutNewsViewController: UIViewController, UICollectionViewDataSource, UIC
             nameLabel.text = group.name
         }
         textLabel.text = news.text
+        postDateLabel.text = Date().offset(from: news.date)
     }
 
     //MARK: - CollectionView methods

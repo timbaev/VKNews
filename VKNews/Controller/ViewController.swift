@@ -9,8 +9,8 @@
 import UIKit
 import VKSdkFramework
 
-class ViewController: UIViewController, VKSdkDelegate {
-    
+class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
+
     let newsSegue = "newsSegue"
     
     override func viewDidLoad() {
@@ -18,6 +18,7 @@ class ViewController: UIViewController, VKSdkDelegate {
         
         if let sdk = VKSdk.initialize(withAppId: "6201081") {
             sdk.register(self)
+            sdk.uiDelegate = self
         }
     }
     
@@ -39,7 +40,6 @@ class ViewController: UIViewController, VKSdkDelegate {
         }
     }
     
-    
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         UserDefaults.standard.set(true, forKey: authorizedKey)
         performSegue(withIdentifier: newsSegue, sender: nil)
@@ -47,6 +47,14 @@ class ViewController: UIViewController, VKSdkDelegate {
     
     func vkSdkUserAuthorizationFailed() {
         print("Oups..failed")
+    }
+    
+    func vkSdkShouldPresent(_ controller: UIViewController!) {
+        present(controller, animated: true, completion: nil)
+    }
+    
+    func vkSdkNeedCaptchaEnter(_ captchaError: VKError!) {
+        
     }
 
 }
