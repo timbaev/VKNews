@@ -218,7 +218,20 @@ class NewsTableViewController: UITableViewController {
     
     
     @IBAction func onExitClick(_ sender: UIBarButtonItem) {
-        logOut()
+        let confirm = "Подтверждение"
+        let message = "Точно выйти?"
+        let cancel = "Отмена"
+        let exit = "Выход"
+        
+        let confirmAlert = UIAlertController(title: confirm, message: message, preferredStyle: .actionSheet)
+        let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
+        let exitAction = UIAlertAction(title: exit, style: .destructive) { (action) in
+            self.logOut()
+        }
+        confirmAlert.addAction(cancelAction)
+        confirmAlert.addAction(exitAction)
+        
+        present(confirmAlert, animated: true, completion: nil)
     }
         
     private func logOut() {
