@@ -16,13 +16,16 @@ fileprivate enum SourceType {
 
 class CoreDataStore {
     
+    static let newsManagedName = "NewsManaged"
+    static let sourceManagedName = "SourceManaged"
+    
     //MARK: - get methods
     
     static func getNews() -> [News] {
         var news = [News]()
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NewsManaged")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: newsManagedName)
         
         do {
             let newsManageds = try managedContext.fetch(fetchRequest) as! [NewsManaged]
@@ -60,7 +63,7 @@ class CoreDataStore {
         var sources = [Int : Source]()
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SourceManaged")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: sourceManagedName)
         let filter = "0"
         var predicate: NSPredicate!
         if type == .profile {
@@ -96,7 +99,7 @@ class CoreDataStore {
     private static func getSource(from sourceID: Int) -> SourceManaged? {
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "SourceManaged")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: sourceManagedName)
         let filter = String(sourceID)
         let predicate = NSPredicate(format: "sourceID == %@", filter)
         fetchRequest.predicate = predicate
@@ -114,7 +117,7 @@ class CoreDataStore {
     private static func getNews(from postID: Int32) -> NewsManaged? {
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NewsManaged")
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: newsManagedName)
         let filter = String(postID)
         let predicate = NSPredicate(format: "postID == %@", filter)
         fetchRequest.predicate = predicate
@@ -155,7 +158,7 @@ class CoreDataStore {
     static func save(news: News) {
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let entity = NSEntityDescription.entity(forEntityName: "NewsManaged", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: newsManagedName, in: managedContext)!
         let newsManaged = NewsManaged(entity: entity, insertInto: managedContext)
         
         let typeBool = (news.type == .post)
@@ -175,7 +178,7 @@ class CoreDataStore {
     static func save(source: Source, with id: Int) {
         let managedContext = CoreDataManager.instance.managedObjectContext
         
-        let entity = NSEntityDescription.entity(forEntityName: "SourceManaged", in: managedContext)!
+        let entity = NSEntityDescription.entity(forEntityName: sourceManagedName, in: managedContext)!
         let sourceManaged = SourceManaged(entity: entity, insertInto: managedContext)
         
         var name = source.name

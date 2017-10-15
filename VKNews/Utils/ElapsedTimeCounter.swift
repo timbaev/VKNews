@@ -29,6 +29,7 @@ extension Date {
     func offset(from date: Date) -> String {
         let ago = "назад"
         let dateFormat = "d MMM"
+        let yesterdayAt = "Вчера в"
         let timeString = "\(hours(from: date)):\(minutes(from: date))"
         
         let daysAgo = days(from: date)
@@ -41,7 +42,7 @@ extension Date {
         }
         
         if daysAgo < 2, daysAgo >= 1 {
-            return "Вчера в \(timeString)"
+            return yesterdayAt + "\(timeString)"
         }
         
         let hoursAgo = hours(from: date)

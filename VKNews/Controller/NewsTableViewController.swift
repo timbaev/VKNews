@@ -21,6 +21,7 @@ class NewsTableViewController: UITableViewController {
     let aboutNewsSegueIdentifier = "aboutNewsSegue"
     
     let countRow = 20
+    let maxPhotos = 2
     var loadMoreStatus = false
     var nextFrom: String?
     
@@ -44,6 +45,8 @@ class NewsTableViewController: UITableViewController {
         }
     }
     
+    //MARK: - prepare methods
+    
     private func prepareNavBar() {
         navigationController?.navigationBar.barTintColor = UIColor(red: 80/255.0, green: 128/255.0, blue: 184/255.0, alpha: 1)
         navigationController?.navigationBar.tintColor = .white
@@ -59,10 +62,11 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func prepareRefrechControl() {
+        let refreshingBegan = "Идет обновление..."
         refreshControl = UIRefreshControl()
         
         if let refreshControl = refreshControl {
-            refreshControl.attributedTitle = NSAttributedString(string: "Идет обновление...")
+            refreshControl.attributedTitle = NSAttributedString(string: refreshingBegan)
             refreshControl.addTarget(self, action: #selector(refresh(sender:)), for: .valueChanged)
         }
     }
@@ -107,6 +111,8 @@ class NewsTableViewController: UITableViewController {
         }
     }
     
+    //MARK: - works with news
+    
     private func restoreNewsVK() {
         news = CoreDataStore.getNews()
         groups = CoreDataStore.getGroups()
@@ -114,7 +120,7 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func getNewsVK(append: Bool, loadEnd: @escaping (Bool) -> ()) {
-        var getParameters: [String : Any] = ["filters" : "post", "max_photos" : "2", "count":"\(countRow)"]
+        var getParameters: [String : Any] = ["filters" : "post", "max_photos" : "\(maxPhotos)", "count":"\(countRow)"]
         if (append) {
             if let startFrom = nextFrom {
                 getParameters["start_from"] = startFrom
@@ -139,8 +145,8 @@ class NewsTableViewController: UITableViewController {
     
     private func prepareData(with json: JSON, append: Bool) {
         if (!append) {
-            CoreDataStore.deleteAllData(entity: "NewsManaged")
-            CoreDataStore.deleteAllData(entity: "SourceManaged")
+            CoreDataStore.deleteAllData(entity: CoreDataStore.newsManagedName)
+            CoreDataStore.deleteAllData(entity: CoreDataStore.sourceManagedName)
             news.removeAll()
             profiles.removeAll()
             groups.removeAll()
@@ -212,7 +218,7 @@ class NewsTableViewController: UITableViewController {
         nextFrom = json["next_from"].stringValue
     }
     
-    
+    //MARK: - user methods
     
     @IBAction func onExitClick(_ sender: UIBarButtonItem) {
         let cancel = "Отмена"
@@ -292,14 +298,14 @@ class NewsTableViewController: UITableViewController {
         }
         if let savedImages = CoreDataStore.getPostPhotos(from: news.postID) {
             for (i, image) in savedImages.enumerated() {
-                if i == 2 { break }
+                if i == maxPhotos { break }
                 cell.photoImageViews[i].isHidden = false
                 cell.photoImageViews[i].image = image
                 cell.photoImageViews[i].backgroundColor = UIColor.white
             }
         } else {
             for (i, imageURL) in news.imagesURL.enumerated() {
-                if i == 2 { break }
+                if i == maxPhotos { break }
                 cell.photoImageViews[i].isHidden = false
                 cell.photoImageViews[i].kf.setImage(with: imageURL, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, casheType, url) in
                     if let image = image {

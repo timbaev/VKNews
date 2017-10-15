@@ -15,7 +15,7 @@ struct Group: Source, CustomStringConvertible {
     
     var description: String {
         return "name: \(name)" + "\n" +
-        "photoURL: \(photoURL)"
+                "photoURL: \(photoURL)"
     }
     
 }

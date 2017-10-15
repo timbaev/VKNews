@@ -28,12 +28,6 @@ class NewsTableViewCell: UITableViewCell {
         moreButton.tintColor = .darkGray
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        
-        // Configure the view for the selected state
-    }
-    
     func prepareCell(with news: News, with source: Source) {
         
         if let profile = source as? Profile {

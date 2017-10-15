@@ -16,8 +16,8 @@ struct Profile: Source, CustomStringConvertible {
     
     var description: String {
         return "name: \(name)" + "\n" +
-        "surname: \(surname)" + "\n" +
-        "photoURL: \(photoURL)"
+                "surname: \(surname)" + "\n" +
+                "photoURL: \(photoURL)"
     }
     
 }

@@ -13,6 +13,6 @@ import CoreData
 
 public class NewsManaged: NSManagedObject {
     convenience init() {
-        self.init(entity: CoreDataManager.instance.entity(for: "NewsManaged"), insertInto: CoreDataManager.instance.managedObjectContext)
+        self.init(entity: CoreDataManager.instance.entity(for: CoreDataStore.newsManagedName), insertInto: CoreDataManager.instance.managedObjectContext)
     }
 }

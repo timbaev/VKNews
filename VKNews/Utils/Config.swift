@@ -12,3 +12,4 @@ let scope = ["friends", "wall"]
 let authorizedKey = "authorized"
 let loginControllerIdentifier = "loginController"
 let newsfeedControllerIdentifier = "newsfeedController"
+let appID = "6201081"

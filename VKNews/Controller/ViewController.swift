@@ -19,7 +19,7 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
         super.viewDidLoad()
         loginButton.layer.cornerRadius = 5
         
-        if let sdk = VKSdk.initialize(withAppId: "6201081") {
+        if let sdk = VKSdk.initialize(withAppId: appID) {
             sdk.register(self)
             sdk.uiDelegate = self
         }

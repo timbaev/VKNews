@@ -24,8 +24,8 @@ struct News: CustomStringConvertible {
     
     var description: String {
         return "sourceID: \(sourceID)" + "\n" +
-            "date: \(date)" + "\n" +
-        "text: \(text)" + "\n" +
-        "imagesUR: \(imagesURL.description)"
+                "date: \(date)" + "\n" +
+                "text: \(text)" + "\n" +
+                "imagesUR: \(imagesURL.description)"
     }
 }
