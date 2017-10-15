@@ -29,6 +29,7 @@ class NewsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prepareNavBar()
         prepareTableView()
         prepareRefrechControl()
         checkSession()
@@ -41,6 +42,12 @@ class NewsTableViewController: UITableViewController {
                 }
             }
         }
+    }
+    
+    private func prepareNavBar() {
+        navigationController?.navigationBar.barTintColor = UIColor(red: 80/255.0, green: 128/255.0, blue: 184/255.0, alpha: 1)
+        navigationController?.navigationBar.tintColor = .white
+        navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor: UIColor.white]
     }
     
     private func prepareTableView() {

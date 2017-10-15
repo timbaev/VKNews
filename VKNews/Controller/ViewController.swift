@@ -13,8 +13,11 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
 
     let newsSegue = "newsSegue"
     
+    @IBOutlet weak var loginButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        loginButton.layer.cornerRadius = 5
         
         if let sdk = VKSdk.initialize(withAppId: "6201081") {
             sdk.register(self)
