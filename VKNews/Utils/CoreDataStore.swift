@@ -106,7 +106,7 @@ class CoreDataStore {
         
         do {
             let sourceManageds = try managedContext.fetch(fetchRequest) as! [SourceManaged]
-            guard sourceManageds.count == 1 else { print("not found source"); return nil }
+            guard sourceManageds.count == 1 else { return nil }
             return sourceManageds[0]
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")

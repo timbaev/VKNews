@@ -145,11 +145,7 @@ class NewsTableViewController: UITableViewController {
     
     private func prepareData(with json: JSON, append: Bool) {
         if (!append) {
-            CoreDataStore.deleteAllData(entity: CoreDataStore.newsManagedName)
-            CoreDataStore.deleteAllData(entity: CoreDataStore.sourceManagedName)
-            news.removeAll()
-            profiles.removeAll()
-            groups.removeAll()
+            clearCache()
         }
         
         let itemsJSON = json["items"].arrayValue
@@ -239,6 +235,7 @@ class NewsTableViewController: UITableViewController {
         if let storyboard = self.storyboard {
             VKSdk.forceLogout()
             UserDefaults.standard.set(false, forKey: authorizedKey)
+            clearCache()
             
             let loginController = storyboard.instantiateViewController(withIdentifier: loginControllerIdentifier)
             self.present(loginController, animated: true, completion: nil)
@@ -336,6 +333,18 @@ fileprivate extension UIImageView {
         self.image = nil
         self.backgroundColor = .darkGray
         self.isHidden = true
+    }
+    
+}
+
+fileprivate extension NewsTableViewController {
+    
+    func clearCache() {
+        CoreDataStore.deleteAllData(entity: CoreDataStore.newsManagedName)
+        CoreDataStore.deleteAllData(entity: CoreDataStore.sourceManagedName)
+        news.removeAll()
+        profiles.removeAll()
+        groups.removeAll()
     }
     
 }
