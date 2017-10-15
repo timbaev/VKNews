@@ -42,7 +42,9 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         UserDefaults.standard.set(true, forKey: authorizedKey)
-        performSegue(withIdentifier: newsSegue, sender: nil)
+        
+        let newsfeedController = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(withIdentifier: newsfeedControllerIdentifier)
+        UIApplication.shared.delegate?.window??.rootViewController = newsfeedController
     }
     
     func vkSdkUserAuthorizationFailed() {

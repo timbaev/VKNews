@@ -70,18 +70,7 @@ class NewsTableViewController: UITableViewController {
             })
         }
     }
-    
-    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let currentOffset = scrollView.contentOffset.y
-        let maximumOffset = scrollView.contentSize.height - scrollView.frame.size.height
-        
-        let deltaOffset = maximumOffset - currentOffset
-        
-        if deltaOffset <= 0, news.count != 0 {
-            loadMore()
-        }
-    }
-    
+
     private func loadMore() {
         if (!loadMoreStatus) {
             loadMoreStatus = true
@@ -218,12 +207,10 @@ class NewsTableViewController: UITableViewController {
     
     
     @IBAction func onExitClick(_ sender: UIBarButtonItem) {
-        let confirm = "Подтверждение"
-        let message = "Точно выйти?"
         let cancel = "Отмена"
         let exit = "Выход"
         
-        let confirmAlert = UIAlertController(title: confirm, message: message, preferredStyle: .actionSheet)
+        let confirmAlert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let cancelAction = UIAlertAction(title: cancel, style: .cancel, handler: nil)
         let exitAction = UIAlertAction(title: exit, style: .destructive) { (action) in
             self.logOut()
@@ -296,6 +283,12 @@ class NewsTableViewController: UITableViewController {
         }
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row == news.count - 1 {
+            loadMore()
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
