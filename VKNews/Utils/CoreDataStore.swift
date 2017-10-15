@@ -31,6 +31,7 @@ class CoreDataStore {
                 let sourceID:Int = Int(newsManaged.sourceID)
                 let date:Date = newsManaged.date! as Date
                 let text:String = newsManaged.text!
+                let postID:Int32 = newsManaged.postID
                 let imageLinks = newsManaged.imageLinks
                 var imagesURL = [URL]()
                 imageLinks.forEach({ (link) in
@@ -39,7 +40,7 @@ class CoreDataStore {
                     }
                 })
                 
-                news.append(News(type: newsType, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL))
+                news.append(News(type: newsType, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL, postID: postID))
             }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
@@ -110,6 +111,24 @@ class CoreDataStore {
         return nil
     }
     
+    private static func getNews(from postID: Int32) -> NewsManaged? {
+        let managedContext = CoreDataManager.instance.managedObjectContext
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "NewsManaged")
+        let filter = String(postID)
+        let predicate = NSPredicate(format: "postID == %@", filter)
+        fetchRequest.predicate = predicate
+        
+        do {
+            let newsManageds = try managedContext.fetch(fetchRequest) as! [NewsManaged]
+            guard newsManageds.count == 1 else { print("not found source"); return nil }
+            return newsManageds[0]
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return nil
+    }
+    
     static func getPhoto(from sourceID: Int) -> UIImage? {
         if let sourceManaged = getSource(from: sourceID) {
             if let imageData = sourceManaged.avatarImageData {
@@ -117,6 +136,16 @@ class CoreDataStore {
                     return image
                 }
             }
+        }
+        return nil
+    }
+    
+    static func getPostPhotos(from postID: Int32) -> [UIImage]? {
+        if let newsManaged = getNews(from: postID) {
+            guard let imagesData = newsManaged.imagesData else { return nil }
+            guard let savedImages = NSKeyedUnarchiver.unarchiveObject(with: imagesData) as? NSArray else { return nil }
+            let images = savedImages.flatMap { return UIImage(data: $0 as! Data) }
+            return images
         }
         return nil
     }
@@ -138,6 +167,7 @@ class CoreDataStore {
         newsManaged.date = news.date as NSDate
         newsManaged.text = news.text
         newsManaged.imageLinks = imageLinks
+        newsManaged.postID = news.postID
         
         CoreDataManager.instance.saveContext()
     }
@@ -165,6 +195,25 @@ class CoreDataStore {
         
         if let sourceManaged = getSource(from: sourceID) {
             sourceManaged.avatarImageData = imageData
+            CoreDataManager.instance.saveContext()
+        }
+    }
+    
+    static func save(postID: Int32, image: UIImage) {
+        if let newsManaged = getNews(from: postID) {
+            if let imagesData = newsManaged.imagesData {
+                guard let savedImages = NSKeyedUnarchiver.unarchiveObject(with: imagesData) as? NSArray else { return }
+                guard let imageData = UIImageJPEGRepresentation(image, 1) else { return }
+                savedImages.adding(NSData(data: imageData))
+                let coreDataImages = NSKeyedArchiver.archivedData(withRootObject: savedImages)
+                newsManaged.imagesData = coreDataImages
+            } else {
+                let coreDataImageArray = NSMutableArray()
+                guard let imageData = UIImageJPEGRepresentation(image, 1) else { return }
+                coreDataImageArray.add(NSData(data: imageData))
+                let coreDataImages = NSKeyedArchiver.archivedData(withRootObject: coreDataImageArray)
+                newsManaged.imagesData = coreDataImages
+            }
             CoreDataManager.instance.saveContext()
         }
     }

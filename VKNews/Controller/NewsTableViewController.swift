@@ -150,6 +150,7 @@ class NewsTableViewController: UITableViewController {
             let dateUnixTime = itemJSON["date"].intValue
             let date = Date(timeIntervalSince1970: TimeInterval(dateUnixTime))
             let text = itemJSON["text"].stringValue
+            let postID = itemJSON["post_id"].int32Value
             
             let attachments = itemJSON["attachments"].arrayValue
             for attachment in attachments {
@@ -161,7 +162,7 @@ class NewsTableViewController: UITableViewController {
                 }
             }
             
-            let newsStruct = News(type: type, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL)
+            let newsStruct = News(type: type, sourceID: sourceID, date: date, text: text, imagesURL: imagesURL, postID: postID)
             news.append(newsStruct)
             CoreDataStore.save(news: newsStruct)
         }
@@ -272,14 +273,34 @@ class NewsTableViewController: UITableViewController {
             cell.avatarImageView.image = nil
             cell.photoImageViews[0].setDefault()
             cell.photoImageViews[1].setDefault()
-            cell.avatarImageView.kf.setImage(with: source.photoURL)
+            if let image = CoreDataStore.getPhoto(from: sourceNewsID) {
+                cell.avatarImageView.image = image
+            } else {
+                cell.avatarImageView.kf.setImage(with: source.photoURL, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, cacheType, url) in
+                    if let image = image {
+                        CoreDataStore.save(sourceID: sourceNewsID, image: image)
+                    }
+                })
+            }
         }
-        
-        for (i, imageURL) in news.imagesURL.enumerated() {
-            if i == 2 { break }
-            cell.photoImageViews[i].isHidden = false
-            cell.photoImageViews[i].kf.setImage(with: imageURL)
-            cell.photoImageViews[i].backgroundColor = UIColor.white
+        if let savedImages = CoreDataStore.getPostPhotos(from: news.postID) {
+            for (i, image) in savedImages.enumerated() {
+                if i == 2 { break }
+                cell.photoImageViews[i].isHidden = false
+                cell.photoImageViews[i].image = image
+                cell.photoImageViews[i].backgroundColor = UIColor.white
+            }
+        } else {
+            for (i, imageURL) in news.imagesURL.enumerated() {
+                if i == 2 { break }
+                cell.photoImageViews[i].isHidden = false
+                cell.photoImageViews[i].kf.setImage(with: imageURL, placeholder: nil, options: nil, progressBlock: nil, completionHandler: { (image, error, casheType, url) in
+                    if let image = image {
+                        CoreDataStore.save(postID: news.postID, image: image)
+                    }
+                })
+                cell.photoImageViews[i].backgroundColor = UIColor.white
+            }
         }
         
         return cell

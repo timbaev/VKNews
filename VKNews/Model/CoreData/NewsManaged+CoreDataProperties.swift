@@ -22,5 +22,7 @@ extension NewsManaged {
     @NSManaged public var type: Bool
     @NSManaged public var imageLinks: [String]
     @NSManaged public var sourceID: Int32
-
+    @NSManaged public var postID: Int32
+    @NSManaged public var imagesData: Data?
+    
 }
