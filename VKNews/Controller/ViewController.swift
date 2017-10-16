@@ -26,20 +26,24 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     @IBAction func onLoginClick(_ sender: UIButton) {
-        VKSdk.wakeUpSession(scope) { (_ state: VKAuthorizationState, _ error: Error?) -> Void in
-            switch state {
-            case .authorized:
-                self.performSegue(withIdentifier: self.newsSegue, sender: nil)
-                break
-            case .initialized:
-                VKSdk.authorize(scope)
-                break
-            case .error:
-                self.showAlert(with: "Ошибка авторизации", message: "Проверьте интернет подключение. Попробуйте еще раз.")
-                break
-            default:
-                break
+        if self.isInternetAvailable() {
+            VKSdk.wakeUpSession(scope) { (_ state: VKAuthorizationState, _ error: Error?) -> Void in
+                switch state {
+                case .authorized:
+                    self.performSegue(withIdentifier: self.newsSegue, sender: nil)
+                    break
+                case .initialized:
+                    VKSdk.authorize(scope)
+                    break
+                case .error:
+                    self.showAlert(with: "Ошибка авторизации", message: "Проверьте интернет подключение. Попробуйте еще раз.")
+                    break
+                default:
+                    break
+                }
             }
+        } else {
+            self.showAlert(with: "Нет соединения!", message: "Отсутствует интернет подключение")
         }
     }
     

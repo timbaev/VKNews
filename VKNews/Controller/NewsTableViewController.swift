@@ -120,6 +120,12 @@ class NewsTableViewController: UITableViewController {
     }
     
     private func getNewsVK(append: Bool, loadEnd: @escaping (Bool) -> ()) {
+        guard isInternetAvailable() else {
+            self.showAlert(with: "Нет соединения!", message: "Отсутствует интернет подключение")
+            loadEnd(false)
+            return
+        }
+        
         var getParameters: [String : Any] = ["filters" : "post", "max_photos" : "\(maxPhotos)", "count":"\(countRow)"]
         if (append) {
             if let startFrom = nextFrom {
