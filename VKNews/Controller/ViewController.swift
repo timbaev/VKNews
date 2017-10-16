@@ -35,7 +35,7 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
                 VKSdk.authorize(scope)
                 break
             case .error:
-                print("Some error happend, but you may try later")
+                self.showAlert(with: "Ошибка авторизации", message: "Проверьте интернет подключение. Попробуйте еще раз.")
                 break
             default:
                 break
@@ -51,7 +51,7 @@ class ViewController: UIViewController, VKSdkDelegate, VKSdkUIDelegate {
     }
     
     func vkSdkUserAuthorizationFailed() {
-        print("Oups..failed")
+        self.showAlert(with: "Что-то пошло не так", message: "Не удаось авторизовать вас на сервере")
     }
     
     func vkSdkShouldPresent(_ controller: UIViewController!) {

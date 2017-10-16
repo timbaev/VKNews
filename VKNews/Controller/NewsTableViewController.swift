@@ -137,7 +137,7 @@ class NewsTableViewController: UITableViewController {
                 }
             }, errorBlock: { (error) in
                 loadEnd(false)
-                print("error")
+                self.showAlert(with: "Ошибка :(", message: "Не удалось получить список новостей")
             })
         }
         
